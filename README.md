@@ -8,4 +8,4 @@
 
 
 ### Entity Relationship Diagram
-![Inventory] https://lucid.app/lucidchart/fa593fe4-f95a-4234-9a21-45b39fb165d2/edit?invitationId=inv_faa85139-4f5f-4b84-bf72-031641dae7f5
+![Inventory ERD](https://user-images.githubusercontent.com/77462898/155398135-b9a3a9ce-6d27-4b82-b998-fc1260f8ab91.png)
