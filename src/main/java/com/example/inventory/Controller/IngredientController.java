@@ -4,11 +4,11 @@ package com.example.inventory.Controller;
 import com.example.inventory.model.Ingredient;
 import com.example.inventory.service.IngredientService;
 import com.example.inventory.service.OrderService;
+import com.example.inventory.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -29,6 +29,18 @@ public class IngredientController {
         this.orderService = orderService;
     }
 
+//    private SalesService salesService;
+//
+//    @Autowired
+//    public void setSalesService(SalesService salesService) {
+//        this.salesService = salesService;
+//    }
+
+    @GetMapping("/ingredients")
+    public List<Ingredient> getAllIngredients(){
+
+        return ingredientService.getAllIngredients();
+    }
 
     @PostMapping("/ingredients")
     public Ingredient createIngredient(@RequestBody Ingredient ingredientObject){

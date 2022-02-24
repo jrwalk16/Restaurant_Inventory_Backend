@@ -5,6 +5,8 @@ import com.example.inventory.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IngredientService {
 
@@ -15,6 +17,10 @@ public class IngredientService {
         this.ingredientRepository = ingredientRepository;
     }
 
+    public List<Ingredient> getAllIngredients() {
+        return ingredientRepository.findAll();
+    }
+
     public Ingredient createIngredient(Ingredient ingredientObject){
         Ingredient ingredient = ingredientRepository.findByIngredientName(ingredientObject.getIngredientName());
         if(ingredient != null){
@@ -23,4 +29,6 @@ public class IngredientService {
             return ingredientRepository.save(ingredientObject);
         }
     }
+
+
 }
