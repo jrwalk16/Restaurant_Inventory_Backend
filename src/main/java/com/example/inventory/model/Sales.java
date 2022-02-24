@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "purchases")
-public class Purchases {
+public class Sales {
     
 
     @Id
@@ -13,16 +13,27 @@ public class Purchases {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private Integer amountSold;
 
-    public Purchases() {
+    public Sales() {
     }
 
-    public Purchases(Long id) {
+    public Sales(Long id, Integer amountSold) {
         this.id = id;
+        this.amountSold = amountSold;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Integer getAmountSold() {
+        return amountSold;
+    }
+
+    public void setAmountSold(Integer amountSold) {
+        this.amountSold = amountSold;
     }
 
     public void setId(Long id) {
@@ -31,8 +42,9 @@ public class Purchases {
 
     @Override
     public String toString() {
-        return "Purchases{" +
+        return "Sales{" +
                 "id=" + id +
+                ", amountSold=" + amountSold +
                 '}';
     }
 }
