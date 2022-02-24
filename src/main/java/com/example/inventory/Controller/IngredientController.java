@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -46,4 +47,10 @@ public class IngredientController {
     public Ingredient createIngredient(@RequestBody Ingredient ingredientObject){
       return ingredientService.createIngredient(ingredientObject);
     }
+
+    @GetMapping("/ingredients/{ingredientId}/")
+    public Optional<Ingredient> getIngredient(@PathVariable(value = "ingredientId") Long ingredientId){
+        return ingredientService.getIngredient(ingredientId);
+    }
+
 }
