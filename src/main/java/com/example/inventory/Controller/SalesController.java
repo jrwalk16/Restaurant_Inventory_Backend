@@ -50,4 +50,5 @@ public class SalesController {
         return salesService.getSales(ingredientId, salesId);
     }
 
+
 }

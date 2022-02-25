@@ -53,12 +53,13 @@ public class SalesService {
     }
 
     public List<Sales> getAllSales(Long ingredientId) {
-        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId);
-        if(ingredient.isPresent()){
-            return ingredient.get().getSalesList();
-        } else {
-            throw new InformationNotFoundException("ingredient with id " + ingredientId + " does not exist");
-        }
+        // 1. check if the ingredient is present
+        // if not throw the error
+        // else call the findAllByIngredient_Id
+        // or else thorw no order for the current ingredient
+        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+        List<Sales> sales = salesRepository.findAllByIngredient_Id(ingredientId);
+        return sales;
 
 
     }

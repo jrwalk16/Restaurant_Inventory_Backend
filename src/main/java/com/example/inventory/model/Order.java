@@ -19,6 +19,18 @@ public class Order {
     @Column
     private Integer amountReceived;
 
+
+    @OneToOne
+    private Ingredient ingredient;
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
+    }
+
     public Order() {
     }
 
@@ -66,8 +78,7 @@ public class Order {
                 '}';
     }
 
-    public void setIngredient(Ingredient ingredient) {
-    }
+
 
     @OneToMany
     private List<Ingredient> ingredientList;

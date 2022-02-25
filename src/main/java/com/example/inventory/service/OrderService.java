@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -46,13 +47,14 @@ public class OrderService {
         return orderRepository.save(orderObject);
     }
 
-    public List<Ingredient> getAllOrders(Long orderId) {
-        Optional<Order> order = orderRepository.findById(orderId);
-        if(order.isPresent()){
-            return order.get().getIngredientList();
-        } else {
-            throw new InformationNotFoundException("ingredient with id " + orderId + " does not exist");
-        }
+    public List<Order> getAllOrders(Long ingredientId){
+        // 1. check if the ingredient is present
+        // if not throw the error
+        // else call the findAllByIngredient_Id
+        // or else thorw no order for the current ingredient
+        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+        List<Order> order = orderRepository.findAllByIngredient_Id(ingredientId);
+        return order;
     }
     public Order getOrder(Long ingredientId, Long orderId){
         Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId);
@@ -65,4 +67,6 @@ public class OrderService {
         }
         return order.get();
     }
+
+
 }

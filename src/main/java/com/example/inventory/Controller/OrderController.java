@@ -37,18 +37,20 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/ingredients/{ingredientId}/order/")
+    @PostMapping("/ingredients/{ingredientId}/order")
     public Order createOrder(@PathVariable(value = "ingredientId") Long ingredientId, @RequestBody Order orderObject){
         return orderService.createOrder(ingredientId, orderObject);
     }
 
-    @GetMapping("/ingredients/{ingredientId}/order/")
-    public List<Ingredient> getAllOrders(@PathVariable(value = "ingredientId")Long ingredientId){
+    @GetMapping("/ingredients/{ingredientId}/order")
+    public List<Order> getAllOrders(@PathVariable(value = "ingredientId")Long ingredientId){
         return orderService.getAllOrders(ingredientId);
     }
 
     @GetMapping("/ingredients/{ingredientId}/order/{orderId}")
-    public Order getSeries(@PathVariable(value = "ingredientId") Long ingredientId, @PathVariable(value = "orderId") Long orderId){
+    public Order getOrder(@PathVariable(value = "ingredientId") Long ingredientId, @PathVariable(value = "orderId") Long orderId){
         return orderService.getOrder(ingredientId, orderId);
     }
+
+
 }
