@@ -5,6 +5,7 @@ import com.example.inventory.exceptions.InformationExistException;
 import com.example.inventory.exceptions.InformationNotFoundException;
 import com.example.inventory.model.Ingredient;
 import com.example.inventory.model.Order;
+import com.example.inventory.model.Sales;
 import com.example.inventory.repository.IngredientRepository;
 import com.example.inventory.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +53,23 @@ public class OrderService {
         // if not throw the error
         // else call the findAllByIngredient_Id
         // or else thorw no order for the current ingredient
+//        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+//        List<Order> order = orderRepository.findAllByIngredient_Id(ingredientId);
+//        return order;
+
+
         Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+        if(!ingredient.isPresent()){
+            throw new InformationNotFoundException("ingredient with ID "+ ingredientId + " not found");
+        }
         List<Order> order = orderRepository.findAllByIngredient_Id(ingredientId);
+        if(order.isEmpty()){
+            throw new InformationNotFoundException("orders with ingredient ID " + ingredientId + " not found");
+        }
         return order;
     }
+
+
     public Order getOrder(Long ingredientId, Long orderId){
         Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId);
         if(ingredient == null) {

@@ -57,8 +57,19 @@ public class SalesService {
         // if not throw the error
         // else call the findAllByIngredient_Id
         // or else thorw no order for the current ingredient
+//        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+//        List<Sales> sales = salesRepository.findAllByIngredient_Id(ingredientId);
+//        if(sales.isEmpty()){
+//            throw new InformationNotFoundException("sales with ingredient ID " + ingredientId + " not found");
+//        }
         Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId );
+        if(!ingredient.isPresent()){
+            throw new InformationNotFoundException("ingredient with ID "+ ingredientId + " not found");
+        }
         List<Sales> sales = salesRepository.findAllByIngredient_Id(ingredientId);
+        if(sales.isEmpty()){
+            throw new InformationNotFoundException("sales with ingredient ID " + ingredientId + " not found");
+        }
         return sales;
 
 
