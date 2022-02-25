@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -19,9 +20,6 @@ public class Ingredient {
 
     @Column
     private Integer startingInventory;
-
-
-
 
 
     @Column
@@ -80,5 +78,10 @@ public class Ingredient {
         this.inventoryOnHand = inventoryOnHand;
     }
 
+    @OneToMany
+    private List<Order> orderList;
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
 }

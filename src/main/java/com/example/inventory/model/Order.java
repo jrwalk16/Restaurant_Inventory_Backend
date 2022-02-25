@@ -13,6 +13,9 @@ public class Order {
     private Long id;
 
     @Column
+    private Long invoiceNumber;
+
+    @Column
     private Integer amountReceived;
 
     public Order() {
@@ -26,8 +29,10 @@ public class Order {
         return id;
     }
 
-    public void setId(Long id) {
+    public Order(Long id, Long invoiceNumber, Integer amountReceived) {
         this.id = id;
+        this.invoiceNumber = invoiceNumber;
+        this.amountReceived = amountReceived;
     }
 
     public Integer getAmountReceived() {
@@ -43,11 +48,23 @@ public class Order {
         this.amountReceived = amountReceived;
     }
 
+    public Long getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(Long invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
+                ", invoiceNumber=" + invoiceNumber +
                 ", amountReceived=" + amountReceived +
                 '}';
+    }
+
+    public void setIngredient(Ingredient ingredient) {
     }
 }
