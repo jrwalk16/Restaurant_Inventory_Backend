@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -66,5 +67,12 @@ public class Order {
     }
 
     public void setIngredient(Ingredient ingredient) {
+    }
+
+    @OneToMany
+    private List<Ingredient> ingredientList;
+
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.inventory.Controller;
 
 
+import com.example.inventory.model.Ingredient;
 import com.example.inventory.model.Order;
 import com.example.inventory.service.IngredientService;
 import com.example.inventory.service.OrderService;
@@ -42,7 +43,7 @@ public class OrderController {
     }
 
     @GetMapping("/ingredients/{ingredientId}/order/")
-    public List<Order> getAllOrders(@PathVariable(value = "ingredientId")Long ingredientId){
+    public List<Ingredient> getAllOrders(@PathVariable(value = "ingredientId")Long ingredientId){
         return orderService.getAllOrders(ingredientId);
     }
 

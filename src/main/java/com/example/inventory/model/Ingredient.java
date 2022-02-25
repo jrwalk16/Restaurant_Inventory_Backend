@@ -84,4 +84,11 @@ public class Ingredient {
     public List<Order> getOrderList() {
         return orderList;
     }
+
+    @OneToMany
+    private List<Sales> salesList;
+
+    public List<Sales> getSalesList() {
+        return salesList;
+    }
 }

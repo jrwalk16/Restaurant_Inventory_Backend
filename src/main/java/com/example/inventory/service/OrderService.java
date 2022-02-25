@@ -46,12 +46,12 @@ public class OrderService {
         return orderRepository.save(orderObject);
     }
 
-    public List<Order> getAllOrders(Long ingredientId) {
-        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId);
-        if(ingredient.isPresent()){
-            return ingredient.get().getOrderList();
+    public List<Ingredient> getAllOrders(Long orderId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if(order.isPresent()){
+            return order.get().getIngredientList();
         } else {
-            throw new InformationNotFoundException("ingredient with id " + ingredientId + " does not exist");
+            throw new InformationNotFoundException("ingredient with id " + orderId + " does not exist");
         }
     }
     public Order getOrder(Long ingredientId, Long orderId){
